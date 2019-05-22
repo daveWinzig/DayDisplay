@@ -18,9 +18,8 @@ package ToDoList;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
@@ -29,6 +28,8 @@ import javafx.scene.text.Text;
  * @author david.winzig.2729
  */
 public class ListManager {
+    
+    public static TextField addField  = new TextField();
     
     //clear an item from the list
     public static EventHandler clear(GridPane listPane, ToDoList toDoList, Button toDoButton, int index) {
@@ -50,19 +51,14 @@ public class ListManager {
         
         //create the + button
         Button addButton = new Button("+");
-        addButton.setId("todoitemcheck");
-        
-        //gets the new item text
-        TextInputDialog addItem = new TextInputDialog();
-        
-        addItem.setHeaderText("Enter new To Do Item");
+        addButton.setId("todoitemcheck"); 
         
         addButton.setOnAction(e -> {
-            addItem.showAndWait();
-            if(addItem.getEditor().getText() != null) {
-                toDoList.addToDoItem(addItem.getEditor().getText());
-                list(listPane, toDoList);
-            }
+
+            toDoList.addToDoItem(addField.getText());
+            addField.clear();
+            list(listPane, toDoList);
+
             
     });
         
@@ -96,10 +92,15 @@ public class ListManager {
             listPane.addRow(i, toDoButton, temp);
         }
         
-        Text placeholder = new Text(" ");  
-        placeholder.setId("todoitem");
-        
-        listPane.addRow(i, addButton(listPane, toDoList), placeholder);
+        //addfield properties
+        addField.setText("add new...");
+        addField.setId("textfield");
+        addField.requestFocus();
+        addField.setOnMouseClicked(e -> {
+            if(addField.getText().equals("add new..."))
+                addField.clear();
+        });
+        listPane.addRow(i, addButton(listPane, toDoList), addField);
                 
     }
     
