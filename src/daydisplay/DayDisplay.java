@@ -4,9 +4,7 @@
  *   x Get weather from API
  *   - Make weather images
  * - To Do List - may try for google taks api as well as local events?
- *   - Have each item have an "owner" - display owner name with item
- *   - If no owner display no name
- *   - Organize by owner, by age (time since creation), or due date
+ *   - Organize by age (time since creation), or due date
  *   - Have ability to add recurring items
  *     - MAybe with an enum list of days to choose from? 
  * - Calendar - (may try for google calender api) as well as local events?
@@ -25,11 +23,10 @@ package daydisplay;
 //imports
 import TimeAndDate.Date;
 import TimeAndDate.Time;
-import ToDoList.CompleteItem;
+import ToDoList.ListManager;
 import ToDoList.ToDoList;
 import Weather.Weather;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -39,6 +36,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -47,7 +45,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
-import javafx.stage.Popup;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -197,11 +194,11 @@ public class DayDisplay extends Application {
                 ToDoList toDoList = new ToDoList();
                 
                 //add some working data
-                toDoList.addToDoItem("Build a house");
-                toDoList.addToDoItem("Build a snowman");
-                toDoList.addToDoItem("Build a sand castle");
-                toDoList.addToDoItem("Build a pony");
-                toDoList.addToDoItem("Build a doghouse");
+//                toDoList.addToDoItem("Build a house");
+//                toDoList.addToDoItem("Build a snowman");
+//                toDoList.addToDoItem("Build a sand castle");
+//                toDoList.addToDoItem("Build a pony");
+//                toDoList.addToDoItem("Build a doghouse");
                 
                 //To Do List Label
                 Text toDoListLabel = new Text("TO DO TODAY");
@@ -212,7 +209,7 @@ public class DayDisplay extends Application {
                 
                 GridPane listPane = new GridPane();
                 listPane.setId("todogrid");
-                listPane.setGridLinesVisible(true);
+                //listPane.setGridLinesVisible(true);
                 
                 listPane.setVgap(0);
                 listPane.setHgap(15);
@@ -223,27 +220,9 @@ public class DayDisplay extends Application {
                     numItems = toDoList.getNumItems();
                 }
                 
-                
                 //create to do list
-                for(int i = 0; i < numItems; i++) {
-                    
-                    
-                    Button toDoButton = new Button(String.valueOf(i));
-                    
-                    toDoButton.setId("todoitemcheck");
-                   
-                    Text temp = toDoList.getToDo(i);
-                    temp.setId("todoitem");
-                    
-                    //handle the events
-                    EventHandler toDoHandler = CompleteItem.clear(listPane, toDoList, toDoButton, temp, i);       
-                    toDoButton.setOnAction(toDoHandler);
-                    
-                    //add a new row to grid with button and text
-                    listPane.addRow(i, toDoButton, temp);
-                }
+                ListManager.list(listPane, toDoList);
                 
-
                 
         //End Bottom Row - Calendar, ToDo List, and Dinner Block ---------------
         
