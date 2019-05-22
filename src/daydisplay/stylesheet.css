@@ -1,0 +1,113 @@
+/*
+Copyright (C) 2019 dave
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+/* 
+    Created on : May 13, 2019, 9:54:00 PM
+    Author     : dave
+*/
+
+
+/*date and time style*/
+
+#text {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+ 
+}
+#date {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 125;
+    -fx-font-weight: bold;
+}
+#time {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 125;
+}
+
+/*weather style*/
+
+#temp {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 100;
+}
+
+#type {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 100;
+    -fx-font-weight: bold;
+}
+
+/*calendar style*/
+#calendartitle {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 60;
+    -fx-font-weight: bold;
+}
+
+#calendar {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 40;
+}
+
+/* to do style */
+#todotitle {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 60;
+    -fx-font-weight: bold;
+}
+
+#todoitem {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 40;
+}
+
+.button {
+    -fx-background-color: #ffffff;
+    -fx-padding: 0;
+    -fx-margins: 0;
+    -fx-font-family: Rajdhani; 
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-text-fill: #000000;
+    -fx-border-width: 3;
+    -fx-border-color: #ffffff;
+    -fx-pref-height: 30px;
+    -fx-pref-width: 30px;
+    -fx-border-radius: 3;
+
+}
+
+#todogrid {
+    -fx-padding: 0 0 0 50;
+}
+
+#grid {
+    -fx-background: #000000;
+    -fx-alignment: TOP_CENTER;
+    -fx-padding: 25 25 0 25;
+    -fx-hgap: 100;
+    -fx-vgap: 25;
+}
