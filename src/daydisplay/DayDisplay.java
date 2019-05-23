@@ -18,6 +18,7 @@
  * - To Do List Management UI
  * - Calender Management UI
 */
+
 package daydisplay;
 
 //imports
@@ -27,16 +28,13 @@ import ToDoList.ListManager;
 import ToDoList.ToDoList;
 import Weather.Weather;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -275,18 +273,6 @@ public class DayDisplay extends Application {
                 frame.add(calendarLabel, 0, 4);
         
         //End Grid Layout ------------------------------------------------------
-
-        //Popup - this works -put it into a class for pop ups
-//            Label test = new Label("To Do Stuff");
-//            test.setStyle(" -fx-background-color: white;");
-//            test.setId("text");
-//            
-//            Popup toDoPop = new Popup();
-//            toDoPop.getContent().add(test);
-//            toDoPop.show(primaryStage);
-//            toDoPop.centerOnScreen();
-            
-            
             
         //Scene stuff
              

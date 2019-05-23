@@ -14,6 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package ToDoList;
 
 import javafx.event.ActionEvent;
@@ -23,10 +24,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-/**
+/*Author: Dave Winzig
  *
- * @author david.winzig.2729
+ * 
  */
+
 public class ListManager {
     
     public static TextField addField  = new TextField();
@@ -55,11 +57,15 @@ public class ListManager {
         
         addButton.setOnAction(e -> {
 
-            toDoList.addToDoItem(addField.getText());
-            addField.clear();
-            list(listPane, toDoList);
-
-            
+            if(!addField.getText().isEmpty() && !addField.getText().equals("add new...") && !addField.getText().equals("type some text...")) {
+                toDoList.addToDoItem(addField.getText());
+                addField.clear();
+                list(listPane, toDoList);
+            }
+            else {
+                addField.clear();
+                addField.setText("type some text...");
+            }
     });
         
     return addButton;
@@ -95,11 +101,11 @@ public class ListManager {
         //addfield properties
         addField.setText("add new...");
         addField.setId("textfield");
-        addField.requestFocus();
         addField.setOnMouseClicked(e -> {
             if(addField.getText().equals("add new..."))
                 addField.clear();
         });
+
         listPane.addRow(i, addButton(listPane, toDoList), addField);
                 
     }
