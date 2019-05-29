@@ -18,7 +18,6 @@ package Calendar;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import javafx.stage.Stage;
 /**
  *
  * @author dave winzig
@@ -30,15 +29,43 @@ public class CalendarEvent {
     private final LocalDate cDate;
     private final LocalTime cTime;
     private final LocalDate dDate;
-    private LocalTime dTime;
+    private final LocalTime dTime;
     
-    public CalendarEvent(Stage primaryStage, String event) {
+    //constructor
+    public CalendarEvent(String event, LocalDate dDate, LocalTime dTime) {
         
         this.event = event;
         cDate = LocalDate.now();
         cTime =  LocalTime.now();
-        dDate = PopPicker.datePop(primaryStage);
+        this.dDate = dDate;
+        this.dTime = dTime;
        
     }
 
+    public String getEvent() {
+        return event;
+    }
+
+    public LocalDate getcDate() {
+        return cDate;
+    }
+
+    public LocalTime getcTime() {
+        return cTime;
+    }
+
+    public LocalDate getdDate() {
+        return dDate;
+    }
+
+    public LocalTime getdTime() {
+        return dTime;
+    }
+
+    @Override
+    public String toString() {
+        return dDate + " " + dTime + " " + event;
+    }
+    
+    
 }

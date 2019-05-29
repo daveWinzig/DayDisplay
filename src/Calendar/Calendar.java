@@ -16,10 +16,42 @@
  */
 package Calendar;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dave
  */
 public class Calendar {
+    
+    //calendar data
+    private final ArrayList<CalendarEvent> calendarEvents;
+    
+    //constructor
+    public Calendar() {
+        
+        //make the arraylist of calendar events
+        calendarEvents = new ArrayList<>();
+        
+        
+    }
+
+    //getter
+    public ArrayList<CalendarEvent> getCalendarEvents() {
+        return calendarEvents;
+    }
+    
+    //add an event
+    public void addEvent(CalendarEvent event) {
+        calendarEvents.add(event);
+    }
+    
+    //remove an event
+    public void removeEvent(CalendarEvent event) {
+        calendarEvents.remove(event);
+    }
+    
+    
+    
     
 }

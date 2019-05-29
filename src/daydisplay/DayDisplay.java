@@ -22,6 +22,7 @@
 package daydisplay;
 
 //imports
+import Calendar.CalendarManager;
 import TimeAndDate.Date;
 import TimeAndDate.Time;
 import ToDoList.ListManager;
@@ -161,6 +162,7 @@ public class DayDisplay extends Application {
             //Calendar and Dinner Block
                 
                 // Calendar Block
+                    CalendarManager calendarManager = new CalendarManager();
 
                     //Calendar Label
                     Text calendarLabel = new Text("SCHEDULE");
@@ -170,11 +172,9 @@ public class DayDisplay extends Application {
                     GridPane.setValignment(calendarLabel, VPos.BOTTOM);
                     GridPane.setMargin(calendarLabel, new Insets(50, 0, 0, 0));
                     
-                    Text calendarBox = new Text("CALENDAR DATA HERE");
-                    calendarBox.setId("calendar");
-                    //calendarBox.setBoundsType(TextBoundsType.VISUAL);
-                    GridPane.setHalignment(calendarBox, HPos.LEFT);
-                    GridPane.setValignment(calendarBox, VPos.TOP);
+
+                    //CalendarGrid
+                    GridPane calendarList = calendarManager.list();
   
                 // Dinner Plan Block
 
@@ -271,6 +271,9 @@ public class DayDisplay extends Application {
                 
                 //row 5
                 frame.add(calendarLabel, 0, 4);
+                
+                //row 6
+                frame.add(calendarList, 0, 5);
         
         //End Grid Layout ------------------------------------------------------
             
