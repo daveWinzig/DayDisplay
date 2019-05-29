@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 dave winzig
+ * Copyright (C) 2019 dave
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,28 +17,31 @@
 package Calendar;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import javafx.scene.control.DatePicker;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+
 /**
  *
- * @author dave winzig
+ * @author dave
  */
-public class CalendarEvent {
+public class PopPicker {
     
-    //attributes
-    private final String event;
-    private final LocalDate cDate;
-    private final LocalTime cTime;
-    private final LocalDate dDate;
-    private LocalTime dTime;
-    
-    public CalendarEvent(Stage primaryStage, String event) {
+    public static LocalDate datePop(Stage primaryStage) {
         
-        this.event = event;
-        cDate = LocalDate.now();
-        cTime =  LocalTime.now();
-        dDate = PopPicker.datePop(primaryStage);
-       
+        //actual popup
+        Popup pop = new Popup();
+        
+        //some content for popup
+        DatePicker dp = new DatePicker();
+        
+        //add datepicker to popup
+        pop.getContent().add(dp);
+        
+        pop.show(primaryStage);
+        
+        return dp.getValue();
+        
+        
     }
-
 }

@@ -18,7 +18,6 @@ package ToDoList;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 import javafx.scene.text.Text;
 
 /**
@@ -29,26 +28,19 @@ import javafx.scene.text.Text;
 public class ToDoItem implements Serializable {
     
     //data members
-    
     private String item;
-    private Date dueDate; 
-    private Calendar calTime;
-    private final Date created;
-    private boolean completed;
+    private final Calendar created;
     
     //default constructor
     public ToDoItem() {
         item = null;
-        created = calTime.getTime();
-        completed = false;
+        created = Calendar.getInstance();
     }
     
     //item with no users
     public ToDoItem(String item) {
         this.item = item;
-        calTime = (Calendar) Calendar.getInstance();
-        this.created = calTime.getTime();
-        this.completed = false;
+        this.created = Calendar.getInstance();
     }
 
     //setters and getters
@@ -59,14 +51,6 @@ public class ToDoItem implements Serializable {
 
     public void setItem(String item) {
         this.item = item;
-    }
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
     }
     
     @Override
