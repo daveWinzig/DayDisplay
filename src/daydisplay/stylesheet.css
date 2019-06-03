@@ -92,11 +92,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     -fx-font-weight: bold;
     -fx-font-size: 20;
     -fx-text-fill: #000000;
-    -fx-border-width: 3;
-    -fx-border-color: #ffffff;
     -fx-pref-height: 30px;
     -fx-pref-width: 30px;
-    -fx-border-radius: 3;
+    -fx-background-radius: 3px;
 
 }
 
@@ -104,11 +102,56 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     -fx-padding: 0 0 0 50;
 }
 
+#calendargrid {
+    -fx-padding: 0 0 0 50;
+}
+
+#eventtext {
+    -fx-font-family: Rajdhani; 
+    -fx-fill: #ffffff;
+    -fx-font-size: 40;
+    -fx-alignment: CENTER;
+    -fx-padding: 0px 0px 0px 10px;
+}
+
+#eventdate {
+    -fx-background-color: #ffffff;
+    -fx-padding: 0;
+    -fx-margins: 0;
+    -fx-alignment:CENTER;
+    -fx-font-family: Rajdhani; 
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-text-fill: #000000;
+    -fx-pref-height: 30px;
+    -fx-pref-width: 150px;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 3px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px 0px 0px 3px;
+}
+
+#eventtime {
+    -fx-background-color: #000000;
+    -fx-padding: 0;
+    -fx-margins: 0;
+    -fx-alignment:CENTER;
+    -fx-font-family: Rajdhani; 
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-text-fill: #ffffff;
+    -fx-pref-height: 30px;
+    -fx-pref-width: 150px;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 3px;
+    -fx-border-radius: 0px 3px 3px 0px;
+    -fx-background-radius: 0px 3px 3px 0px;
+}
+
 #grid {
     -fx-background: #000000;
     -fx-alignment: TOP_CENTER;
     -fx-padding: 25 25 0 25;
-    -fx-hgap: 100;
     -fx-vgap: 25;
 }
 

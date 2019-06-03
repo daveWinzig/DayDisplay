@@ -30,7 +30,6 @@ import javax.swing.JOptionPane;
 public class ToDoList  {
     //data members
     private ArrayList<ToDoItem> toDoItems; //list of things to do
-    private final ArrayList<ToDoItem> completedItems; //list of things done
     
     //constructor
     public ToDoList() {
@@ -40,7 +39,6 @@ public class ToDoList  {
         if(toDoItems == null) {
             toDoItems = new ArrayList<>();
         }
-        completedItems = new ArrayList<>();
     }
     
     //add an item - return ture if added
@@ -72,24 +70,12 @@ public class ToDoList  {
     public boolean completeItem(int index) {
         
         boolean success = false;
-        
-        //add completed item to completed item array
-        if(completedItems.add(toDoItems.remove(index))) {
-            
-            success = true;
-        }
+       
+        toDoItems.remove(index);
         
         saveState();
         
         return success;
-    }
-    
-    //clear completed
-    public boolean clearCompleted() {
-        
-        completedItems.clear();
-        
-        return true;
     }
     
    //get ToDoITem
@@ -108,7 +94,6 @@ public class ToDoList  {
         try {
             ToDoListWriter.writeList(toDoItems);
         } catch (IOException ex) {
-            Logger.getLogger(ToDoList.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Failed to save To Do List.");
         }
     }

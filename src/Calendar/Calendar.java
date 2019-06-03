@@ -16,24 +16,28 @@
  */
 package Calendar;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author dave
  */
+
 public class Calendar {
     
     //calendar data
-    private final ArrayList<CalendarEvent> calendarEvents;
+    private ArrayList<CalendarEvent> calendarEvents;
     
     //constructor
     public Calendar() {
         
-        //make the arraylist of calendar events
-        calendarEvents = new ArrayList<>();
-        
-        
+        calendarEvents = CalendarEventLoader.readList();
+
+        if(calendarEvents == null) {
+            calendarEvents = new ArrayList<>();
+        }
     }
 
     //getter
@@ -44,14 +48,28 @@ public class Calendar {
     //add an event
     public void addEvent(CalendarEvent event) {
         calendarEvents.add(event);
+        saveState();
     }
     
     //remove an event
     public void removeEvent(CalendarEvent event) {
         calendarEvents.remove(event);
+        saveState();
     }
     
+    public void removeEvent(int index) {
+        calendarEvents.remove(index);
+        saveState();
+    }
     
-    
-    
+        //save the current state of the list
+    private void saveState() {
+        
+        try {
+            CalendarWriter.writeList(calendarEvents);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Failed to save To Do List.");
+        }
+    }
+
 }

@@ -16,13 +16,14 @@
  */
 package Calendar;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 /**
  *
  * @author dave winzig
  */
-public class CalendarEvent {
+public class CalendarEvent implements Serializable {
     
     //attributes
     private final String event;

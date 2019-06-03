@@ -35,6 +35,7 @@ public class ListManager {
     
     //clear an item from the list
     public static EventHandler clear(GridPane listPane, ToDoList toDoList, Button toDoButton, int index) {
+        
         EventHandler toDoHandler = (EventHandler<ActionEvent>) (ActionEvent t) -> {
             
             //remove todo item from todo list

@@ -20,10 +20,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 
 /**
  *
@@ -31,7 +31,7 @@ import javafx.scene.text.Text;
  */
 
 //this class manages the creation and addition of calender events
-public class CalendarManager {
+public final class CalendarManager {
     
     // Calendar Stuff
     private final Calendar calendar;
@@ -78,18 +78,14 @@ public class CalendarManager {
     //add an event
     public void addEvent() {
         
-        //temp test code
-        
-        calendar.addEvent(createEvent());
-        calendar.addEvent(createEvent());
-        calendar.addEvent(createEvent());
-        calendar.addEvent(createEvent());
-        calendar.addEvent(createEvent());
         
     }
             
     //return gridlist of events
     public GridPane list() {
+        
+        //sort calendar
+        sortCalendar();
         
         //make the grid to be returned
         GridPane calPane = new GridPane();
@@ -103,26 +99,29 @@ public class CalendarManager {
         //loop through events and add to grid
         for(int i = 0; i < numEvents; i++) {
             
-            Button button = new Button(String.valueOf(i + 1));
-            button.setId("todoitemcheck");
+            Label dateText = new Label(workingCal.get(i).getdTime().format(DateTimeFormatter.ofPattern("hh:mm a")));
+            dateText.setId("eventtime");
             
-            Text dateText = new Text(workingCal.get(i).getdTime().format(DateTimeFormatter.ofPattern("h mm a")));
-            dateText.setId("todoitem");
+            Label timeText = new Label(workingCal.get(i).getdDate().format(DateTimeFormatter.ofPattern("MMM dd yyyy")) );
+            timeText.setId("eventdate");
             
-            Text timeText = new Text(workingCal.get(i).getdDate().format(DateTimeFormatter.ofPattern("MMM dd")) );
-            timeText.setId("todoitem");
+            Label eventText = new Label(workingCal.get(i).getEvent());
+            eventText.setId("eventtext");    
             
-            Text eventText = new Text(workingCal.get(i).getEvent());
-            eventText.setId("todoitem");    
-            
-            calPane.addRow(i, button, dateText, timeText, eventText);
+            calPane.addRow(i, timeText, dateText, eventText);
             
             
         }
         
+        
+        
                 
         return calPane;
         
+    }
+    
+    public void sortCalendar() {
+        Collections.sort(calendar.getCalendarEvents(), new CalendarComparator());
     }
     
     

@@ -175,6 +175,7 @@ public class DayDisplay extends Application {
 
                     //CalendarGrid
                     GridPane calendarList = calendarManager.list();
+                    calendarList.setId("calendargrid");
   
                 // Dinner Plan Block
 
