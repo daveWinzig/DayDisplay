@@ -61,6 +61,8 @@ public class ListManager {
             if(!addField.getText().isEmpty() && !addField.getText().equals("add new...") && !addField.getText().equals("type some text...")) {
                 toDoList.addToDoItem(addField.getText());
                 addField.clear();
+                
+                //reset the list
                 list(listPane, toDoList);
             }
             else {
@@ -74,6 +76,7 @@ public class ListManager {
     
     public static void list(GridPane listPane, ToDoList toDoList) {
         
+        //clear and reset the list display
         listPane.getChildren().clear();
         
         int numItems = toDoList.getNumItems();

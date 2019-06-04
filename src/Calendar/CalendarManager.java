@@ -16,14 +16,16 @@
  */
 package Calendar;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
+import javafx.collections.FXCollections;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import java.time.Month;
 
 /**
  *
@@ -35,6 +37,7 @@ public final class CalendarManager {
     
     // Calendar Stuff
     private final Calendar calendar;
+    private final int NUM_DISP = 5;
 
     
     //Constructor
@@ -48,56 +51,59 @@ public final class CalendarManager {
     }
     
 
-    //create an event
-    private CalendarEvent createEvent() {
-
-        int year, month, day, hour,minute;
-        String event;
-                
-        Random random = new Random();
-        
-        year = random.nextInt(100) + 2000;
-        month = random.nextInt(12) + 1;
-        day = random.nextInt(31) + 1;
-        
-        hour = random.nextInt(24);
-        minute = random.nextInt(60);
-
-        event = "Test";
-        
-        //temp hold date and time
-        LocalDate dDate = LocalDate.of(year, month, day);
-        LocalTime dTime = LocalTime.of(hour, minute);
-        
-        
-        return new CalendarEvent(event, dDate, dTime);
-        
-        
-    }
+//    //create an event
+//    private CalendarEvent createEvent() {
+//
+//        
+//        return new CalendarEvent(event, dDate, dTime);
+//        
+//        
+//    }
     
     //add an event
     public void addEvent() {
         
         
     }
+    
+    //add an item via a button
+    public Button addButton(GridPane calPane) {
+        
+        //create the + button
+        Button addButton = new Button("+");
+        addButton.setId("todoitemcheck"); 
+        
+        addButton.setOnAction(e -> {
+
+            //relist the list
+             //clear the 
+        
+        list(calPane);
+        
+        });
+        
+    return addButton;
+    
+    }
             
     //return gridlist of events
-    public GridPane list() {
+    public void list(GridPane calPane) {
         
         //sort calendar
         sortCalendar();
         
-        //make the grid to be returned
-        GridPane calPane = new GridPane();
+        //clear the current display list
+        calPane.getChildren().clear();
         
         //get arraylist of events
         ArrayList<CalendarEvent> workingCal = calendar.getCalendarEvents();
         
         //make sure to only print 10 at a time
-        int numEvents = (workingCal.size() < 10) ? workingCal.size(): 10;
+        int numEvents = (workingCal.size() < NUM_DISP) ? workingCal.size(): NUM_DISP;
         
         //loop through events and add to grid
-        for(int i = 0; i < numEvents; i++) {
+        int i;
+        for(i = 0; i < numEvents; i++) {
             
             Label dateText = new Label(workingCal.get(i).getdTime().format(DateTimeFormatter.ofPattern("hh:mm a")));
             dateText.setId("eventtime");
@@ -113,10 +119,24 @@ public final class CalendarManager {
             
         }
         
+        //add a row with empty slots to add a new event
         
+        //month, day, year input - need validation
+        ComboBox monthBox = new ComboBox();
+        monthBox.setItems(FXCollections.observableArrayList(Month.values()));
         
-                
-        return calPane;
+        monthBox.valueProperty().addListener(listener);
+        ComboBox dayBox = new ComboBox();
+        dayBox.setItems(FXCollections.observableArrayList(Month.values()));
+        
+        //time input - need validation
+        
+        //event text input
+        
+        HBox addHBox = new HBox(addButton(calPane), monthBox);
+        calPane.addRow(i, addHBox);
+
+
         
     }
     

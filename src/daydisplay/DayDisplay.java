@@ -174,7 +174,11 @@ public class DayDisplay extends Application {
                     
 
                     //CalendarGrid
-                    GridPane calendarList = calendarManager.list();
+                    //make the grid
+                    GridPane calendarList = new GridPane();
+                    //fill grid with events
+                    calendarManager.list(calendarList);
+                    //id for style
                     calendarList.setId("calendargrid");
   
                 // Dinner Plan Block
@@ -212,12 +216,6 @@ public class DayDisplay extends Application {
                 
                 listPane.setVgap(0);
                 listPane.setHgap(15);
-
-                //add first 10 to do items to display
-                int numItems = 10;
-                if(toDoList.getNumItems() < 10) {
-                    numItems = toDoList.getNumItems();
-                }
                 
                 //create to do list
                 ListManager.list(listPane, toDoList);
