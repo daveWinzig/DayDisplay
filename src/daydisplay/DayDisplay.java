@@ -171,15 +171,6 @@ public class DayDisplay extends Application {
                     GridPane.setHalignment(calendarLabel, HPos.LEFT);
                     GridPane.setValignment(calendarLabel, VPos.BOTTOM);
                     GridPane.setMargin(calendarLabel, new Insets(50, 0, 0, 0));
-                    
-
-                    //CalendarGrid
-                    //make the grid
-                    GridPane calendarList = new GridPane();
-                    //fill grid with events
-                    calendarManager.list(calendarList);
-                    //id for style
-                    calendarList.setId("calendargrid");
   
                 // Dinner Plan Block
 
@@ -271,8 +262,8 @@ public class DayDisplay extends Application {
                 //row 5
                 frame.add(calendarLabel, 0, 4);
                 
-                //row 6
-                frame.add(calendarList, 0, 5);
+                //row 6 - this adds the flowpane to the grid
+                frame.add(calendarManager.getCalendarPane(), 0, 5);
         
         //End Grid Layout ------------------------------------------------------
             

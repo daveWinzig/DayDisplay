@@ -22,7 +22,8 @@ import java.util.Comparator;
  *
  * @author dave
  */
-public class CalendarComparator implements Comparator<CalendarEvent> {
+
+public class CalendarComparator implements Comparator<CalendarEvent>{
 
     @Override
     public int compare(CalendarEvent event1, CalendarEvent event2) {

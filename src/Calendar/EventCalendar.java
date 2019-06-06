@@ -25,13 +25,13 @@ import javax.swing.JOptionPane;
  * @author dave
  */
 
-public class Calendar {
+public class EventCalendar {
     
     //calendar data
     private ArrayList<CalendarEvent> calendarEvents;
     
     //constructor
-    public Calendar() {
+    public EventCalendar() {
         
         calendarEvents = CalendarEventLoader.readList();
 
