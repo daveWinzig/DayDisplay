@@ -16,7 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /* 
     Created on : May 13, 2019, 9:54:00 PM
-    Author     : dave
+    Author     : dave winzig
 */
 
 
@@ -162,9 +162,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .combo-box {
+    
     -fx-font-family: Rajdhani; 
     -fx-text-fill: #ffffff;
-    -fx-font-size: 20;
+    -fx-font-size: 40;
+    -fx-padding: 0;
+    -fx-margins: 0;
+    -fx-control-inner-background: #000000;
+    -fx-text-box-border: #000000;
+    -fx-focus-color: #000000;
+    -fx-background-color: none;
+}
+
+.list-cell{
+    
+    -fx-font-family: Rajdhani; 
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 40;
     -fx-padding: 0;
     -fx-margins: 0;
     -fx-control-inner-background: #000000;

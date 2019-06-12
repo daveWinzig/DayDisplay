@@ -52,7 +52,7 @@ public final class CalendarManager {
     private final EventCalendar calendar;
     private final int NUM_DISP = 10;
     private final FlowPane calendarPane;
-    private Timeline timeline;
+    private final Timeline timeline;
     private LocalDate today;
 
     
@@ -116,7 +116,9 @@ public final class CalendarManager {
 
             //create the new event
             LocalDate date = LocalDate.of(y, m, d); //date
-            LocalTime t = LocalTime.of(h, m); //time
+            LocalTime t = LocalTime.of(h, min); //time
+
+            
             CalendarEvent tempEvent = new CalendarEvent(event.getText(), date, t);
             
             //add event
@@ -263,7 +265,7 @@ public final class CalendarManager {
         eventText.setText("add text...");
                 
         //this hbox holds the input comboboxes 
-        HBox addHBox = new HBox(addButton(monthBox,dayBox,timeText,eventText), monthBox, dayBox, timeText, eventText);
+        HBox addHBox = new HBox(10, addButton(monthBox,dayBox,timeText,eventText), monthBox, dayBox, timeText, eventText);
         addHBox.setId("addbuttonpane");
         
         calendarPane.getChildren().addAll(addHBox);
